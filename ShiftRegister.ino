@@ -1,52 +1,18 @@
 #include "ShiftRegister.h"
 
-const int DS = 2;
-const int SHCP = 4;
-const int STCP = 3;
-const int outs = 8;
+const int DS = 2;       //pin para el data
+const int SHCP = 4;     //pin para el shcp
+const int STCP = 3;     //pin para el stcp
+const int Qouts = 8;    //cantidad de salidas del 74hc595
 
-boolean n0[] = {1,1,1,0,1,1,1,0};
-boolean n1[] = {1,0,0,0,1,0,0,0};
-boolean n2[] = {1,1,0,1,0,1,1,0};
-boolean n3[] = {1,1,0,1,1,1,0,0};
-boolean n4[] = {1,0,1,1,1,0,0,0};
-boolean n5[] = {0,1,1,1,1,1,0,0};
-boolean n6[] = {0,1,1,1,1,1,1,0};
-boolean n7[] = {1,1,0,0,1,0,0,0};
-boolean n8[] = {1,1,1,1,1,1,1,0};
-boolean n9[] = {1,1,1,1,1,1,0,0};
+boolean leds[] = {1,0,1,0,1,0,1,0};    //8 leds (1 encendido) y (0 apagado)
 
-ShiftRegister ic74hc595(DS, SHCP, STCP, outs);
+ShiftRegister ic74hc595(DS, SHCP, STCP, Qouts);//llamaremos ic74hc595 a nuestro objecto
 
 void setup() {
-  Serial.begin(9600);
-  ic74hc595.begin();
+  ic74hc595.begin();   //inicia los pines como salidas
 }
 
 void loop() {
-
-  int t = 750;
-
-  ic74hc595.show(n0);
-  delay(t);
-  ic74hc595.show(n1);
-  delay(t);
-  ic74hc595.show(n2);
-  delay(t);
-  ic74hc595.show(n3);
-  delay(t);
-  ic74hc595.show(n4);
-  delay(t);
-  ic74hc595.show(n5);
-  delay(t);
-  ic74hc595.show(n6);
-  delay(t);
-  ic74hc595.show(n7);
-  delay(t);
-  ic74hc595.show(n8);
-  delay(t);
-  ic74hc595.show(n9);
-  delay(t);
-
-
+  ic74hc595.show(leds);//envia al shift register los datos
 }
