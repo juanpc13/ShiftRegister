@@ -10,7 +10,7 @@ boolean leds[] = {1,0,1,0,1,0,1,0};    //8 leds (1 encendido) y (0 apagado)
 ShiftRegister ic74hc595(DS, SHCP, STCP, Qouts);//llamaremos ic74hc595 a nuestro objecto
 
 void setup() {
-  ic74hc595.begin();   //inicia los pines como salidas
+  ic74hc595.begin();   //inicia los pines como OUTPUTS
 }
 
 void loop() {
